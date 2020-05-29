@@ -25,7 +25,8 @@ namespace ElevenNote.Services
                     OwnerId = _userId,
                     Title = model.Title,
                     Content = model.Content,
-                    CreatedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTimeOffset.Now,
+                    CategoryId = model.CategoryId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -41,7 +42,7 @@ namespace ElevenNote.Services
                 var query =
                     ctx
                         .Notes
-                        .Where(e => e.OwnerId == _userId)
+                       .Where(e => e.OwnerId == _userId)   //the .Where applys a Filter in SQL
                         .Select(
                             e =>
                                 new NoteListItem
@@ -70,7 +71,8 @@ namespace ElevenNote.Services
                         Title = entity.Title,
                         Content = entity.Content,
                         CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
+                        ModifiedUtc = entity.ModifiedUtc,
+                        CategoryName = entity.Category.Name
                     };
             }
         }
@@ -85,6 +87,7 @@ namespace ElevenNote.Services
                 entity.Title = model.Title;
                 entity.Content = model.Content;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.Category.CategoryId = model.CategoryId;
 
                 return ctx.SaveChanges() == 1;
             }

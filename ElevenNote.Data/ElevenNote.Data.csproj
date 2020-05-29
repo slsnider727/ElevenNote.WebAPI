@@ -84,13 +84,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202005291337459_FirstMigration.cs" />
+    <Compile Include="Migrations\202005291337459_FirstMigration.Designer.cs">
+      <DependentUpon>202005291337459_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005291930089_UpdatedFKMethods.cs" />
+    <Compile Include="Migrations\202005291930089_UpdatedFKMethods.Designer.cs">
+      <DependentUpon>202005291930089_UpdatedFKMethods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005291337459_FirstMigration.resx">
+      <DependentUpon>202005291337459_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005291930089_UpdatedFKMethods.resx">
+      <DependentUpon>202005291930089_UpdatedFKMethods.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
